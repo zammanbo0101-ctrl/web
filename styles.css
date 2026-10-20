@@ -286,7 +286,11 @@ a:focus-visible {
 }
 
 .week-status.is-upcoming {
-  color: var(--color-ink-muted);
+  color: #b33b1b;
+}
+
+.week-label.is-upcoming {
+  color: #b33b1b;
 }
 
 .site-footer {
