@@ -1,0 +1,109 @@
+/* 달빛카페 스타일시트
+   (색상 변수, 글꼴 등 본격적인 스타일은 4단계에서 정리) */
+
+/* ---------- 배경: 달빛 사진 ---------- */
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #f3ead2; /* 크림색 글씨 */
+  background-color: #14183a; /* 사진을 불러오기 전에 보이는 밤하늘 남색 */
+  /* 사진 위에 남색 반투명 막을 겹쳐서 글씨가 잘 읽히게 한다 */
+  background-image:
+    linear-gradient(rgba(20, 24, 58, 0.55), rgba(20, 24, 58, 0.8)),
+    url("images/moon-bg.jpg");
+  background-size: cover;
+  background-position: center 40%; /* 달이 화면 위쪽에 오도록 */
+  background-attachment: fixed; /* 스크롤해도 배경은 그대로 */
+}
+
+/* ---------- 헤더와 상단 버튼 ---------- */
+.site-header {
+  position: sticky; /* 스크롤해도 상단 버튼이 계속 보이게 */
+  top: 0;
+  z-index: 1;
+  padding: 16px;
+  text-align: center;
+  background-color: rgba(20, 24, 58, 0.7);
+}
+
+.logo {
+  margin: 0;
+}
+
+.logo a {
+  color: #f6e3a1; /* 달빛 노랑 */
+  text-decoration: none;
+}
+
+.tagline {
+  margin: 4px 0 12px;
+  color: #b9b4d6;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #f6e3a1;
+  border-radius: 999px;
+  color: #f3ead2;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  background-color: rgba(246, 227, 161, 0.15);
+}
+
+/* ---------- 구역 전환 (CSS :target) ---------- */
+/* 1. 기본: 모든 구역을 숨긴다 */
+main > section {
+  display: none;
+  padding: 24px 16px;
+  scroll-margin-top: 200px; /* 버튼을 눌러도 헤더 아래에서 구역이 시작되게 */
+}
+
+/* 2. 주소 끝의 #이름과 같은 id를 가진 구역만 보인다 */
+main > section:target {
+  display: block;
+}
+
+/* 3. 아무 구역도 선택되지 않았을 때(처음 접속)는 시그니처를 보인다 */
+main:not(:has(section:target)) #signature {
+  display: block;
+}
+
+/* 4. 지금 보고 있는 구역의 버튼을 칠해서 표시한다 */
+body:not(:has(main section:target)) .site-nav a[href="#signature"],
+body:has(#signature:target) .site-nav a[href="#signature"],
+body:has(#coffee:target) .site-nav a[href="#coffee"],
+body:has(#non-coffee:target) .site-nav a[href="#non-coffee"],
+body:has(#dessert:target) .site-nav a[href="#dessert"],
+body:has(#info:target) .site-nav a[href="#info"] {
+  background-color: #f6e3a1;
+  color: #14183a;
+}
+
+/* ---------- 푸터 ---------- */
+.site-footer {
+  padding: 24px 16px;
+  text-align: center;
+  color: #b9b4d6;
+}
+
+.site-footer p {
+  margin: 4px 0;
+}
+
+.site-footer a {
+  color: #b9b4d6;
+}

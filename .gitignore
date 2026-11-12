@@ -1,2 +1,9 @@
 # Obsidian 볼트 (개인 작업 노트, 배포 대상 아님)
 Obsidian/
+
+# 로컬 push 도구 (배포 대상 아님)
+push.bat
+tools/
+
+# 로컬 미리보기 서버 설정 (배포 대상 아님)
+.claude/
